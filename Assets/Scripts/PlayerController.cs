@@ -18,7 +18,12 @@ public class PlayerController : MonoBehaviour {
 		SetCountText ();
 		winText.text = "";
 		originalPos = transform.position;
-	}
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            speed = 500.0f;
+        }
+    }
 	
 	// Update is called once per frame
 	// void Update () {}
@@ -26,23 +31,37 @@ public class PlayerController : MonoBehaviour {
 	// Despues de los calculos de la fisica del objeto
 	void FixedUpdate()
 	{
-		float y =  0.0f;
-		Vector3 pos = transform.position;
-		if (pos.y >= 0.0f) {
-			if (Input.GetKey (KeyCode.Space) && pos.y <= 0.8f) {
-				y = 8.0f;
+        //Movimientos en PC
+		if (SystemInfo.deviceType == DeviceType.Desktop) 
+		{
+			float y =  0.0f;
+			Vector3 pos = transform.position;
+			if (pos.y >= 0.0f) {
+				if (Input.GetKey (KeyCode.Space) && pos.y <= 0.8f) {
+					y = 8.0f;
+				}
+
+				float moveHorizontal = Input.GetAxis ("Horizontal");
+				float moveVertical = Input.GetAxis ("Vertical");
+
+				Vector3 movement = new Vector3 (moveHorizontal, y, moveVertical);
+
+				rb.AddForce (movement * speed);
+			} else {
+				transform.position = originalPos;
+				Stop ();
 			}
-
-			float moveHorizontal = Input.GetAxis ("Horizontal");
-			float moveVertical = Input.GetAxis ("Vertical");
-
-			Vector3 movement = new Vector3 (moveHorizontal, y, moveVertical);
-
-			rb.AddForce (movement * speed);
-		} else {
-			transform.position = originalPos;
-			Stop ();
 		}
+        // Movimiento en dispositivos mobile
+        else
+        {
+            float moveH = Input.acceleration.x;
+            float moveV = Input.acceleration.y;
+
+            Vector3 movement = new Vector3(moveH, 0.0f, moveV);
+
+            rb.AddForce(movement * speed * Time.deltaTime);            
+        }
 	}
 
 	void Stop(){
@@ -71,10 +90,10 @@ public class PlayerController : MonoBehaviour {
 
 	void SetCountText ()
 	{
-		countText.text = "Count: " + count.ToString ();
+		countText.text = "Cubos: " + count.ToString ();
 		if (count >= 8)
 		{
-			winText.text = "You Win!";
+			winText.text = "Ganaste!";
 		}
 	}
 }
