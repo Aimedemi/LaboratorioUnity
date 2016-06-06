@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour {
+public class ControladorBola : NetworkBehaviour {
 	public float speed;
 	public Text countText;
 	public Text winText;
+	public int inicioIndice;
 
+	private NetworkStartPosition[] inicios;
 	private int count;
 	private Rigidbody rb;
 	private Vector3 originalPos;
@@ -15,14 +18,32 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody>();
 		count = 0;
-		SetCountText ();
+		/*
 		winText.text = "";
-		originalPos = transform.position;
+		countText.text = "";
+		SetCountText ();
+		*/
+
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            speed = 500.0f;
         }
+
+		if (isLocalPlayer)
+		{
+			Vector3 inicioDefault = Vector3.zero;
+
+			inicios = FindObjectsOfType<NetworkStartPosition>();
+
+			// Si hay algun inicio en el array, elige uno al azar.
+			if (inicios != null && inicios.Length > 0)
+			{
+				inicioDefault = inicios[inicioIndice].transform.position;
+			}
+
+			// Set the player’s position to the chosen spawn point
+			originalPos = inicioDefault;
+		}
     }
 	
 	// Update is called once per frame
