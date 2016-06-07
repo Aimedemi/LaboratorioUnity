@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
     public void Jugar(string name){
-        Application.LoadLevel(name);
-    }
+		SceneManager.LoadScene (name);
+	}
     public void Salir(){
         Application.Quit();
     }
