@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.Networking;
+
 
 public class ControladorBola : NetworkBehaviour {
 	public float speed;
@@ -76,6 +76,7 @@ public class ControladorBola : NetworkBehaviour {
         // Movimiento en dispositivos mobile
         else
         {
+            speed = speed * 10;
             float moveH = Input.acceleration.x;
             float moveV = Input.acceleration.y;
 
@@ -114,7 +115,7 @@ public class ControladorBola : NetworkBehaviour {
 		countText.text = "Cubos: " + count.ToString ();
 		if (count >= 8)
 		{
-			winText.text = "Ganaste!";
+			winText.text = "¡Ganaste!";
 		}
 	}
 }

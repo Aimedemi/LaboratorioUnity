@@ -1,0 +1,97 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     853 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading G:\Unity\LaboratorioUnity\rolla_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading G:\Unity\LaboratorioUnity\rolla_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.083 seconds
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: G:\Unity\LaboratorioUnity\rolla_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 50Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+desktop: 1366x768 50Hz; virtual: 1366x768 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 0.721280 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 21f0 -> priority: 1 
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 374)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.021866 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 778.
+Total: 2.087073 ms (FindLiveObjects: 0.225374 ms CreateObjectMapping: 0.142449 ms MarkObjects: 1.702007 ms  DeleteObjects: 0.014368 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ControladorBola.SetCountText () [0x00000] in <filename unknown>:0 
+  at ControladorBola.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:SetActive (bool)
+  at Prototype.NetworkLobby.LobbyManager.OnPlayersNumberModified (Int32 count) [0x00000] in <filename unknown>:0 
+  at Prototype.NetworkLobby.LobbyPlayer.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+

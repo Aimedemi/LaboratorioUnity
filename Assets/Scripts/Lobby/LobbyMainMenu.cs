@@ -42,7 +42,7 @@ namespace Prototype.NetworkLobby
             lobbyManager.backDelegate = lobbyManager.StopClientClbk;
             lobbyManager.DisplayIsConnecting();
 
-            lobbyManager.SetServerInfo("Connecting...", lobbyManager.networkAddress);
+            lobbyManager.SetServerInfo("Conectando...", lobbyManager.networkAddress);
         }
 
         public void OnClickDedicated()
@@ -52,7 +52,7 @@ namespace Prototype.NetworkLobby
 
             lobbyManager.backDelegate = lobbyManager.StopServerClbk;
 
-            lobbyManager.SetServerInfo("Dedicated Server", lobbyManager.networkAddress);
+            lobbyManager.SetServerInfo("Servidor Dedicado", lobbyManager.networkAddress);
         }
 
         public void OnClickCreateMatchmakingGame()
