@@ -146,7 +146,7 @@ namespace Prototype.NetworkLobby
         public void DisplayIsConnecting()
         {
             var _this = this;
-            infoPanel.Display("Connecting...", "Cancel", () => { _this.backDelegate(); });
+            infoPanel.Display("Conectando...", "Cancelar", () => { _this.backDelegate(); });
         }
 
         public void SetServerInfo(string status, string host)
@@ -225,7 +225,7 @@ namespace Prototype.NetworkLobby
 
         public void KickedMessageHandler(NetworkMessage netMsg)
         {
-            infoPanel.Display("Kicked by Server", "Close", null);
+            infoPanel.Display("Echado por el servidor", "Cerrar", null);
             netMsg.conn.Disconnect();
         }
 
@@ -237,7 +237,7 @@ namespace Prototype.NetworkLobby
 
             ChangeTo(lobbyPanel);
             backDelegate = StopHostClbk;
-            SetServerInfo("Hosting", networkAddress);
+            SetServerInfo("Hosteando", networkAddress);
         }
 
         public override void OnMatchCreate(CreateMatchResponse matchInfo)
@@ -413,7 +413,7 @@ namespace Prototype.NetworkLobby
         public override void OnClientError(NetworkConnection conn, int errorCode)
         {
             ChangeTo(mainMenuPanel);
-            infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
+            infoPanel.Display("Error en el cliente: " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Cerrar", null);
         }
     }
 }

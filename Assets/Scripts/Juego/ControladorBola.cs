@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 
 
-public class ControladorBola : NetworkBehaviour {
+
+public class ControladorBola : MonoBehaviour {
 	public float speed;
 	public Text countText;
 	public Text winText;
-	public int inicioIndice;
-
-	private NetworkStartPosition[] inicios;
+		
 	private int count;
 	private Rigidbody rb;
 	private Vector3 originalPos;
@@ -29,21 +27,6 @@ public class ControladorBola : NetworkBehaviour {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
 
-		if (isLocalPlayer)
-		{
-			Vector3 inicioDefault = Vector3.zero;
-
-			inicios = FindObjectsOfType<NetworkStartPosition>();
-
-			// Si hay algun inicio en el array, elige uno al azar.
-			if (inicios != null && inicios.Length > 0)
-			{
-				inicioDefault = inicios[inicioIndice].transform.position;
-			}
-
-			// Set the player’s position to the chosen spawn point
-			originalPos = inicioDefault;
-		}
     }
 	
 	// Update is called once per frame

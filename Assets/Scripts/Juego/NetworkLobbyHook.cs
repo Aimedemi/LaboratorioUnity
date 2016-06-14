@@ -7,12 +7,18 @@ public class NetworkLobbyHook : LobbyHook
 {
     public override void OnLobbyServerSceneLoadedForPlayer(NetworkManager manager, GameObject lobbyPlayer, GameObject gamePlayer)
     {
-        LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>();
-		ControladorBola bola = gamePlayer.GetComponent<ControladorBola>();
+        LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>(); //Obtenemos los datos del lobby
+        ControladorBolaNet bola = gamePlayer.GetComponent<ControladorBolaNet>(); //Obtenemos la bola del jugador
 
-        bola.name = lobby.name;
-		bola.inicioIndice = lobby.slot;
-		Material material = bola.GetComponent<Renderer> ().material;
-		material.color = lobby.playerColor;
+        bola.name = lobby.name; //Le ponemos el nombre del lobby a la bola
+        bola.inicioIndice = lobby.slot; //Seteamos su posicion de inicio
+
+        //Coloreamos su bola de acuerdo al color elegido en el lobby
+        Material material = bola.GetComponent<Renderer>().material; //Extraemos el material de la bola
+        material.color = lobby.playerColor; //Le aplicamos el color elegido en el lobby
+
+        //Eliminamos la bola de single player
+        GameObject go = GameObject.FindWithTag("Player"); //Obtenemos el objeto con el tag "Player" (O sea, el jugador)
+        go.SetActive(false); //Lo desactivamos
     }
 }
