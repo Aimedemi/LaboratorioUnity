@@ -12,21 +12,18 @@ public class ControladorBola : MonoBehaviour {
 	private Rigidbody rb;
 	private Vector3 originalPos;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<Rigidbody>();
 		count = 0;
-		/*
-		winText.text = "";
-		countText.text = "";
-		SetCountText ();
-		*/
 
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
 
+		//Al inicio, registramos la bola en el GameController
+		GameController.Instance.addJugador(this);
     }
 	
 	// Update is called once per frame
@@ -67,6 +64,12 @@ public class ControladorBola : MonoBehaviour {
 
             rb.AddForce(movement * speed * Time.deltaTime);            
         }
+
+    }
+
+	void LateUpdate(){
+		//Pedimos a GameController que valide el estado del juego
+		GameController.Instance.verificarEstadoJugadores();
 	}
 
 	void Stop(){
@@ -101,4 +104,9 @@ public class ControladorBola : MonoBehaviour {
 			winText.text = "¡Ganaste!";
 		}
 	}
+
+    public int getCount()
+    {
+        return count;
+    }
 }
