@@ -69,13 +69,30 @@ public class GameController : Singleton<GameController>
     {
         foreach (ControladorBola j in jugadores)
         {
+            bool cumplido = false;
 			ObjetivoDTO dto = new ObjetivoDTO(j.getCount(), timer.getSecondsFinish());
             foreach (Objetivo o in objetivos)
             {
-                bool cumplido = o.verificarObjetivo(dto);
+                cumplido = o.verificarObjetivo(dto);
 
                 if (cumplido)
                 {
+                    //Al acabarse el tiempo se desactivan todos los pick ups
+                    if (o is ObjetivoTiempo)
+                    {
+                        GameObject[] pickUps = GameObject.FindGameObjectsWithTag("Pick Up");
+                        foreach (GameObject pickUp in pickUps)
+                        {
+                            pickUp.SetActive(false);
+                        }
+                    }
+
+                    //Al recolectar todos los puntos se detiene el tiempo
+                    if (o is ObjetivoPuntos)
+                    {
+                        timer.setContar(false);
+                    }
+
                     finJuego(j);
                 }
             }
@@ -99,14 +116,17 @@ public class GameController : Singleton<GameController>
     private void finJuego(ControladorBola jugador)
     {
         //Logica de fin de juego.
-		//TEMPORAL: Invoca al menu principal al pasar 5 segundos.
-		timer.setContar(false);
-		Invoke("invocarMenu", 5);
+        //TEMPORAL: Invoca al menu principal al pasar 5 segundos.
+        this.jugadores = null;
+        this.objetivos = null;
+
+        SceneManager.LoadScene("MainMenu");
+        //Invoke("invocarMenu", 5);
     }
 
-	//Llamado con el Invoke, rehacer.
+	/*Llamado con el Invoke, rehacer.
 	private void invocarMenu(){
 		SceneManager.LoadScene ("MainMenu");
-	}
+	}*/
 
 }
