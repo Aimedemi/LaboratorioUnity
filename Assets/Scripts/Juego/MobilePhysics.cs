@@ -5,7 +5,7 @@ using System;
 public class MobilePhysics : MonoBehaviour{
     public void moverse(Rigidbody rb, float speed)
     {
-
+        speed = speed * 10;
         float moveH = Input.acceleration.x;
         float moveV = Input.acceleration.y;
 
