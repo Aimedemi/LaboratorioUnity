@@ -8,6 +8,13 @@ public class ControladorBolaNet : NetworkBehaviour
     public int inicioIndice;
     private Vector3 originalPos;
 
+	private readonly Vector3 NORTE = new Vector3(0, 0, 0);
+	private readonly Vector3 SUR = new Vector3(180, 0, 0);
+	private readonly Vector3 ESTE = new Vector3(0, 0, 270);
+	private readonly Vector3 OESTE = new Vector3(0, 0, 90);
+	private readonly Vector3 FRENTE = new Vector3(90, 0, 0);
+	private readonly Vector3 ATRAS = new Vector3(270, 0, 0);
+
     // Use this for initialization
     void Start () {
         if (isLocalPlayer)
@@ -16,10 +23,38 @@ public class ControladorBolaNet : NetworkBehaviour
 
             inicios = FindObjectsOfType<NetworkStartPosition>();
 
-            // Si hay algun inicio en el array, elige uno al azar.
+            // Si hay algun inicio en el array, le setea el indice
             if (inicios != null && inicios.Length > 0)
             {
                 inicioDefault = inicios[inicioIndice].transform.position;
+
+				Transform posicion = this.gameObject.GetComponent<Transform> ();
+				Vector3 rotacion = posicion.rotation.eulerAngles;
+
+
+				switch (inicioIndice) {
+				case 0:
+					rotacion = NORTE;
+					break;
+				case 1:
+					rotacion = SUR;
+					break;
+				case 2:
+					rotacion = ESTE;
+					break;
+				case 3:
+					rotacion = OESTE;
+					break;
+				case 4:
+					rotacion = FRENTE;
+					break;
+				case 5:
+					rotacion = ATRAS;
+					break;
+				default:
+					break;
+				}
+
             }
 
             // Set the player’s position to the chosen spawn point

@@ -17,6 +17,11 @@ public class NetworkLobbyHook : LobbyHook
         Material material = bola.GetComponent<Renderer>().material; //Extraemos el material de la bola
         material.color = lobby.playerColor; //Le aplicamos el color elegido en el lobby
 
+		GameObject planeta = GameObject.FindWithTag ("Ground"); //Obtenemos el objeto planeta
+		FauxGravityAttractor atractor = planeta.GetComponent<FauxGravityAttractor>(); //Obtenemos el script de gravedad del planeta
+		FauxGravityBody cuerpo = gamePlayer.GetComponent<FauxGravityBody>(); //Obtenemos el script de gravedad de la bola
+		cuerpo.attractor = atractor; //Le asignamos al cuerpo la fuerza gravitatoria a la que debe responder (Planeta)
+
         //Eliminamos la bola de single player
         GameObject go = GameObject.FindWithTag("Player"); //Obtenemos el objeto con el tag "Player" (O sea, el jugador)
         go.SetActive(false); //Lo desactivamos

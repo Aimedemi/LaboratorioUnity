@@ -7,6 +7,7 @@ public class Setup : MonoBehaviour {
 	// Originalmente lo puse en menu, pero el singleton de GameController no funcionaba entre escenas, asi que inicializo todo aca.
 	void Start () {
 		//Definimos objetivos
+
 		Objetivo objetivoPuntos = new ObjetivoPuntos(8); //Juntar 8 puntos
 		GameController.Instance.addObjetivo(objetivoPuntos);
 
@@ -19,6 +20,7 @@ public class Setup : MonoBehaviour {
 			GameController.Instance.timer = GameObject.FindGameObjectWithTag ("Timer").GetComponent<Timer>();
 			GameController.Instance.restartTimer();
 		}
+
 	}
 	
 	// Update is called once per frame

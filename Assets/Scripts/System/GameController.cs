@@ -101,7 +101,7 @@ public class GameController : Singleton<GameController>
         //Logica de fin de juego.
 		//TEMPORAL: Invoca al menu principal al pasar 5 segundos.
 		timer.setContar(false);
-		Invoke("invocarMenu", 5);
+		//Invoke("invocarMenu", 5); //Se saca por ahora ya que produce fallos.
     }
 
 	//Llamado con el Invoke, rehacer.

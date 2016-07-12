@@ -15,11 +15,12 @@ public class ControladorBola : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		count = 0;
 
+		/*
 		if (SystemInfo.deviceType == DeviceType.Handheld)
 		{
 			Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		}
-
+*/
 		//Al inicio, registramos la bola en el GameController
 		GameController.Instance.addJugador(this);
 	}
@@ -52,8 +53,6 @@ public class ControladorBola : MonoBehaviour {
 
 			rb.AddForce(transform.TransformDirection(movement) * speed);
 
-
-
 		}
 		// Movimiento en dispositivos mobile
 		else
@@ -64,7 +63,7 @@ public class ControladorBola : MonoBehaviour {
 
 			Vector3 movement = new Vector3(moveH, 0.0f, moveV);
 
-			rb.AddForce(transform.TransformDirection(movement) * speed * Time.deltaTime);            
+			//rb.AddForce(transform.TransformDirection(movement) * speed * Time.deltaTime);
 		}
 
 	}
