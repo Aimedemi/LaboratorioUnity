@@ -21,6 +21,8 @@ public class Setup : MonoBehaviour {
 			GameController.Instance.restartTimer();
 		}
 
+		//Camera.main.transform = transform;
+
 	}
 	
 	// Update is called once per frame

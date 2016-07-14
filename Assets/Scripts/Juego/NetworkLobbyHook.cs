@@ -25,5 +25,18 @@ public class NetworkLobbyHook : LobbyHook
         //Eliminamos la bola de single player
         GameObject go = GameObject.FindWithTag("Player"); //Obtenemos el objeto con el tag "Player" (O sea, el jugador)
         go.SetActive(false); //Lo desactivamos
+
+		Objetivo objetivoPuntos = new ObjetivoPuntos(20); //Juntar 20 puntos
+		GameController.Instance.addObjetivo(objetivoPuntos);
+
+		Objetivo objetivoTiempo = new ObjetivoTiempo(60.0F); //En menos de 60 segundos
+		GameController.Instance.addObjetivo(objetivoTiempo);
+
+		//Si uno de los objetivos es por tiempo, iniciamos el timer
+		if (GameController.Instance.isPorTiempo())
+		{
+			GameController.Instance.timer = GameObject.FindGameObjectWithTag ("Timer").GetComponent<Timer>();
+			GameController.Instance.restartTimer();
+		}
     }
 }

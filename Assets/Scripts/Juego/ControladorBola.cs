@@ -57,13 +57,13 @@ public class ControladorBola : MonoBehaviour {
 		// Movimiento en dispositivos mobile
 		else
 		{
-			speed = speed * 10;
-			float moveH = Input.acceleration.x * 3;
-			float moveV = Input.acceleration.y * 3;
+			speed = speed;
+			float moveH = Input.acceleration.x;
+			float moveV = Input.acceleration.y;
 
 			Vector3 movement = new Vector3(moveH, 0.0f, moveV);
 
-			//rb.AddForce(transform.TransformDirection(movement) * speed * Time.deltaTime);
+			rb.AddForce(transform.TransformDirection(movement) * speed);
 		}
 
 	}

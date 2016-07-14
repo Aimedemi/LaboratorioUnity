@@ -61,6 +61,12 @@ public class ControladorBolaNet : NetworkBehaviour
             originalPos = inicioDefault;
         }
     }
+
+	void OnNetworkInstantiate(NetworkMessageInfo info){
+		if(isLocalPlayer){ //if I am the owner of this prefab
+			//Camera.main.transform = transform;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
