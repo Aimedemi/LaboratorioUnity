@@ -9,6 +9,7 @@ public class ControladorBola : MonoBehaviour {
 	private int count;
 	private Rigidbody rb;
 	private Vector3 originalPos;
+	PhysicsController fisica = new PhysicsController();
 
 	// Use this for initialization
 	void Start () {
@@ -41,34 +42,11 @@ public class ControladorBola : MonoBehaviour {
 	// Despues de los calculos de la fisica del objeto
 	void FixedUpdate()
 	{
-		//Movimientos en PC
-		if (SystemInfo.deviceType == DeviceType.Desktop) 
-		{
-			float y = 0.0f;
-
-			float moveHorizontal = Input.GetAxisRaw("Horizontal");
-			float moveVertical = Input.GetAxisRaw("Vertical");
-
-			Vector3 movement = new Vector3(moveHorizontal, y, moveVertical);
-
-			rb.AddForce(transform.TransformDirection(movement) * speed);
-
-		}
-		// Movimiento en dispositivos mobile
-		else
-		{
-			speed = speed;
-			float moveH = Input.acceleration.x;
-			float moveV = Input.acceleration.y;
-
-			Vector3 movement = new Vector3(moveH, 0.0f, moveV);
-
-			rb.AddForce(transform.TransformDirection(movement) * speed);
-		}
-
+		fisica.moverse(rb, speed);
 	}
 
-	void LateUpdate(){
+	void LateUpdate()
+	{
 		//Pedimos a GameController que valide el estado del juego
 		GameController.Instance.verificarEstadoJugadores();
 	}
@@ -91,10 +69,10 @@ public class ControladorBola : MonoBehaviour {
 	void SetCountText ()
 	{
 		countText.text = "Cubos: " + count.ToString ();
-		if (count >= 8)
-		{
-			winText.text = "¡Ganaste!";
-		}
+//		if (count >= 8)
+//		{
+//			winText.text = "¡Ganaste!";
+//		}
 	}
 
 	public int getCount()
