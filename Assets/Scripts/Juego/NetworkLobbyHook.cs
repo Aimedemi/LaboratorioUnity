@@ -25,7 +25,6 @@ public class NetworkLobbyHook : LobbyHook
 			go.SetActive(false); //Lo desactivamos
 		}
 
-
 		Objetivo objetivoPuntos = new ObjetivoPuntos(20); //Juntar 20 puntos
 		GameController.Instance.addObjetivo(objetivoPuntos);
 

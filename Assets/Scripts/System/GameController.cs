@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement; // neded in order to load scenes
+using UnityEngine.UI;
 
 public class GameController : Singleton<GameController>
 {
     public ControladorBola[] jugadores;
     public Objetivo[] objetivos;
     public Timer timer;
+	public Canvas gameOver;
+	public Button siBtn;
+	public Button noBtn;
 
 	protected GameController(){}
 
@@ -67,19 +71,18 @@ public class GameController : Singleton<GameController>
 	//Verificara cuando alguno de los objetivos se haya cumplido. En ese caso, terminara el juego.
     public void verificarEstadoJugadores()
     {
-        foreach (ControladorBola j in jugadores)
-        {
-			ObjetivoDTO dto = new ObjetivoDTO(j.getCount(), timer.getSecondsFinish());
-            foreach (Objetivo o in objetivos)
-            {
-                bool cumplido = o.verificarObjetivo(dto);
+		if (jugadores != null && objetivos != null) {
+			foreach (ControladorBola j in jugadores) {
+				ObjetivoDTO dto = new ObjetivoDTO (j.getCount (), timer.getSecondsFinish ());
+				foreach (Objetivo o in objetivos) {
+					bool cumplido = o.verificarObjetivo (dto);
 
-                if (cumplido)
-                {
-                    finJuego(j);
-                }
-            }
-        }
+					if (cumplido) {
+						finJuego (j);
+					}
+				}
+			}
+		}
     }
 
     public bool isPorTiempo()
@@ -101,12 +104,34 @@ public class GameController : Singleton<GameController>
         //Logica de fin de juego.
 		//TEMPORAL: Invoca al menu principal al pasar 5 segundos.
 		timer.setContar(false);
+		gameOver.enabled = true;
 		//Invoke("invocarMenu", 5); //Se saca por ahora ya que produce fallos.
     }
 
-	//Llamado con el Invoke, rehacer.
-	private void invocarMenu(){
-		SceneManager.LoadScene ("MainMenu");
+	public void cargarEscena (string name){
+		this.reiniciarControlador ();
+		SceneManager.LoadScene (name);
 	}
+	public void restartCurrentScene(){
+		this.reiniciarControlador ();
+		Scene scene = SceneManager.GetActiveScene(); 
+		SceneManager.LoadScene(scene.name);
+	}
+
+	private void reiniciarControlador(){
+		
+		this.jugadores = null;
+		this.objetivos = null;
+		this.timer = null;
+	}
+
+	//hay que sacarlo de aca
+	void Start () {
+		gameOver = gameOver.GetComponent<Canvas>();
+		siBtn = siBtn.GetComponent<Button>();
+		noBtn = noBtn.GetComponent<Button>();
+		gameOver.enabled = false;
+	}
+
 
 }
