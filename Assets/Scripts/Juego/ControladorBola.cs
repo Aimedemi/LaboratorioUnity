@@ -69,10 +69,6 @@ public class ControladorBola : MonoBehaviour {
 	void SetCountText ()
 	{
 		countText.text = "Cubos: " + count.ToString ();
-//		if (count >= 8)
-//		{
-//			winText.text = "¡Ganaste!";
-//		}
 	}
 
 	public int getCount()

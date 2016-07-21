@@ -17,12 +17,14 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
 		get
 		{
+			/*
 			if (applicationIsQuitting) {
 				Debug.LogWarning("[Singleton] La instancia '"+ typeof(T) +
-					"' ya fue destruida al salidr de la aplicacion. " +
+					"' ya fue destruida al salir de la aplicacion. " +
 					" No se creara nuevamente - Devolviendo null.");
 				return null;
 			}
+			*/
 
 			lock(_lock)
 			{

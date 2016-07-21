@@ -12,10 +12,7 @@ public class NetworkLobbyHook : LobbyHook
 
         bola.name = lobby.name; //Le ponemos el nombre del lobby a la bola
         bola.inicioIndice = lobby.slot; //Seteamos su posicion de inicio
-
-        //Coloreamos su bola de acuerdo al color elegido en el lobby
-        Material material = bola.GetComponent<Renderer>().material; //Extraemos el material de la bola
-        material.color = lobby.playerColor; //Le aplicamos el color elegido en el lobby
+		bola.colorBola = lobby.playerColor; //Seteamos el color de la bola elegido en el lobby
 
 		GameObject planeta = GameObject.FindWithTag ("Ground"); //Obtenemos el objeto planeta
 		FauxGravityAttractor atractor = planeta.GetComponent<FauxGravityAttractor>(); //Obtenemos el script de gravedad del planeta
@@ -24,7 +21,9 @@ public class NetworkLobbyHook : LobbyHook
 
         //Eliminamos la bola de single player
         GameObject go = GameObject.FindWithTag("Player"); //Obtenemos el objeto con el tag "Player" (O sea, el jugador)
-        go.SetActive(false); //Lo desactivamos
+		if (go != null) { //Si todavia existe
+			go.SetActive(false); //Lo desactivamos
+		}
 
 		Objetivo objetivoPuntos = new ObjetivoPuntos(20); //Juntar 20 puntos
 		GameController.Instance.addObjetivo(objetivoPuntos);

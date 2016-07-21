@@ -7,6 +7,7 @@ public class ControladorBolaNet : NetworkBehaviour
     private NetworkStartPosition[] inicios;
     public int inicioIndice;
     private Vector3 originalPos;
+	[SyncVar] public Color colorBola;
 
 	private readonly Vector3 NORTE = new Vector3(0, 0, 0);
 	private readonly Vector3 SUR = new Vector3(180, 0, 0);
@@ -59,14 +60,13 @@ public class ControladorBolaNet : NetworkBehaviour
 
             // Set the player’s position to the chosen spawn point
             originalPos = inicioDefault;
+
+			//Coloreamos su bola de acuerdo al color elegido en el lobby
+			Material material = this.gameObject.GetComponent<Renderer>().material; //Extraemos el material de la bola
+			material.color = colorBola; //Le aplicamos el color elegido en el lobby
         }
     }
 
-	void OnNetworkInstantiate(NetworkMessageInfo info){
-		if(isLocalPlayer){ //if I am the owner of this prefab
-			//Camera.main.transform = transform;
-		}
-	}
 	
 	// Update is called once per frame
 	void Update () {

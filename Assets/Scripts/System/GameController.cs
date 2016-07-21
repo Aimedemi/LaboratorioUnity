@@ -71,19 +71,18 @@ public class GameController : Singleton<GameController>
 	//Verificara cuando alguno de los objetivos se haya cumplido. En ese caso, terminara el juego.
     public void verificarEstadoJugadores()
     {
-        foreach (ControladorBola j in jugadores)
-        {
-			ObjetivoDTO dto = new ObjetivoDTO(j.getCount(), timer.getSecondsFinish());
-            foreach (Objetivo o in objetivos)
-            {
-                bool cumplido = o.verificarObjetivo(dto);
+		if (jugadores != null && objetivos != null) {
+			foreach (ControladorBola j in jugadores) {
+				ObjetivoDTO dto = new ObjetivoDTO (j.getCount (), timer.getSecondsFinish ());
+				foreach (Objetivo o in objetivos) {
+					bool cumplido = o.verificarObjetivo (dto);
 
-                if (cumplido)
-                {
-                    finJuego(j);
-                }
-            }
-        }
+					if (cumplido) {
+						finJuego (j);
+					}
+				}
+			}
+		}
     }
 
     public bool isPorTiempo()
@@ -110,11 +109,20 @@ public class GameController : Singleton<GameController>
     }
 
 	public void cargarEscena (string name){
+		this.reiniciarControlador ();
 		SceneManager.LoadScene (name);
 	}
 	public void restartCurrentScene(){
+		this.reiniciarControlador ();
 		Scene scene = SceneManager.GetActiveScene(); 
 		SceneManager.LoadScene(scene.name);
+	}
+
+	private void reiniciarControlador(){
+		
+		this.jugadores = null;
+		this.objetivos = null;
+		this.timer = null;
 	}
 
 	//hay que sacarlo de aca
