@@ -8,10 +8,10 @@ public class Setup : MonoBehaviour {
 	void Start () {
 		//Definimos objetivos
 
-		Objetivo objetivoPuntos = new ObjetivoPuntos(8); //Juntar 8 puntos
+		Objetivo objetivoPuntos = new ObjetivoPuntos(45); //Juntar 25 puntos
 		GameController.Instance.addObjetivo(objetivoPuntos);
 
-		Objetivo objetivoTiempo = new ObjetivoTiempo(30.0F); //En menos de 30 segundos
+		Objetivo objetivoTiempo = new ObjetivoTiempo(60.0F); //En menos de 90 segundos
 		GameController.Instance.addObjetivo(objetivoTiempo);
 
 		//Si uno de los objetivos es por tiempo, iniciamos el timer
