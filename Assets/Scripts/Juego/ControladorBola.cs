@@ -16,12 +16,11 @@ public class ControladorBola : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		count = 0;
 
-		/*
 		if (SystemInfo.deviceType == DeviceType.Handheld)
 		{
 			Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		}
-*/
+
 		//Al inicio, registramos la bola en el GameController
 		GameController.Instance.addJugador(this);
 	}
