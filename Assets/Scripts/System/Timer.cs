@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
 	{
 		if (contar) {
 			secondsFinish -= Time.deltaTime;
-			countDownFinishText.text = "Tiempo: " + Mathf.Round (secondsFinish);
+			countDownFinishText.text = "Tiempo : " + Mathf.Round (secondsFinish);
 			if (secondsFinish < 0) {
 				countDownFinishText.text = "";
 				contar = false;

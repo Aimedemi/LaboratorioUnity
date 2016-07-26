@@ -125,8 +125,8 @@ public class GameController : Singleton<GameController>
 		} else {
 			mensaje = "¡SE ACABO EL TIEMPO!\n";
 		}
-		mensaje = mensaje + "¿Volver a jugar?";
-		Text texto = gameOver.transform.Find ("Text").GetComponent<Text> ();
+		//mensaje = mensaje + "¿Volver a jugar?";
+		Text texto = gameOver.transform.Find ("Resultado").GetComponent<Text> ();
 		texto.text = mensaje;
     }
 

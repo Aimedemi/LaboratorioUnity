@@ -81,7 +81,7 @@ public class ControladorBola : MonoBehaviour {
 
 	void SetCountText ()
 	{
-		countText.text = "Cubos: " + count.ToString ();
+		countText.text = "Cubos : " + count.ToString ();
 	}
 
 	public int getCount()
