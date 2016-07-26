@@ -8,7 +8,7 @@ public class Setup : MonoBehaviour {
 	void Start () {
 		//Definimos objetivos
 
-		Objetivo objetivoPuntos = new ObjetivoPuntos(45); //Juntar 25 puntos
+		Objetivo objetivoPuntos = new ObjetivoPuntos(40); //Juntar 25 puntos
 		GameController.Instance.addObjetivo(objetivoPuntos);
 
 		Objetivo objetivoTiempo = new ObjetivoTiempo(60.0F); //En menos de 90 segundos
