@@ -29,4 +29,8 @@ public class ObjetivoPuntos : Objetivo
 	public override string getNombreClase (){
 		return this.name;
 	}
+
+	public int getPuntosObjetivo(){
+		return puntosObjetivo;
+	}
 }
