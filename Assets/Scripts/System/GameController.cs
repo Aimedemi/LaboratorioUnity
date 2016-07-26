@@ -22,9 +22,6 @@ public class GameController : Singleton<GameController>
 				timer.setSecondsFinish(((ObjetivoTiempo)o).getTiempoObjetivo());
 			}
 		}
-
-		MensajeInicio mensaje = this.gameObject.GetComponent<MensajeInicio> ();
-		mensaje.mostrarObjetivos(this.objetivos);
     }
 
     public void addObjetivo(Objetivo objetivo)
@@ -75,24 +72,13 @@ public class GameController : Singleton<GameController>
     public void verificarEstadoJugadores()
     {
 		if (jugadores != null && objetivos != null) {
-			bool tiempo = false;
-			bool puntos = false;
-
 			foreach (ControladorBola j in jugadores) {
 				ObjetivoDTO dto = new ObjetivoDTO (j.getCount (), timer.getSecondsFinish ());
 				foreach (Objetivo o in objetivos) {
-					if (o is ObjetivoTiempo) {
-						tiempo = o.verificarObjetivo (dto);
-					}
-					if (o is ObjetivoPuntos) {
-						puntos = o.verificarObjetivo (dto);
-					}
+					bool cumplido = o.verificarObjetivo (dto);
 
-					//Si llego a los puntos, ganó
-					if (puntos) {
-						finJuego (j, true);
-					} else if (tiempo) { //Si se acabó el tiempo, perdio
-						finJuego (j, false);
+					if (cumplido) {
+						finJuego (j);
 					}
 				}
 			}
@@ -113,28 +99,19 @@ public class GameController : Singleton<GameController>
         return tiempo;
     }
 
-	private void finJuego(ControladorBola jugador, bool gano)
+    private void finJuego(ControladorBola jugador)
     {
+        //Logica de fin de juego.
+		//TEMPORAL: Invoca al menu principal al pasar 5 segundos.
 		timer.setContar(false);
-		//Desactivamos el movimiento de la bola
-		jugador.bloquearMovimiento();
 		gameOver.enabled = true;
-		string mensaje;
-		if (gano) {
-			mensaje = "¡GANASTE!\n";
-		} else {
-			mensaje = "¡SE ACABO EL TIEMPO!\n";
-		}
-		mensaje = mensaje + "¿Volver a jugar?";
-		Text texto = gameOver.transform.Find ("Text").GetComponent<Text> ();
-		texto.text = mensaje;
+		//Invoke("invocarMenu", 5); //Se saca por ahora ya que produce fallos.
     }
 
 	public void cargarEscena (string name){
 		this.reiniciarControlador ();
 		SceneManager.LoadScene (name);
 	}
-
 	public void restartCurrentScene(){
 		this.reiniciarControlador ();
 		Scene scene = SceneManager.GetActiveScene(); 
@@ -142,6 +119,7 @@ public class GameController : Singleton<GameController>
 	}
 
 	private void reiniciarControlador(){
+		
 		this.jugadores = null;
 		this.objetivos = null;
 		this.timer = null;

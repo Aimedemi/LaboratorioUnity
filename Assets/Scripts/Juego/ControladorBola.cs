@@ -9,7 +9,6 @@ public class ControladorBola : MonoBehaviour {
 	private int count;
 	private Rigidbody rb;
 	private Vector3 originalPos;
-	private bool controlable = true; //Variable booleana que indica si la bola se puede controlar
 	PhysicsController fisica = new PhysicsController();
 
 	// Use this for initialization
@@ -42,9 +41,7 @@ public class ControladorBola : MonoBehaviour {
 	// Despues de los calculos de la fisica del objeto
 	void FixedUpdate()
 	{
-		if (controlable) {
-			fisica.moverse(rb, speed);
-		}
+		fisica.moverse(rb, speed);
 	}
 
 	void LateUpdate()
@@ -66,17 +63,6 @@ public class ControladorBola : MonoBehaviour {
 			count = count + 1;
 			SetCountText ();
 		}
-		//Si entra a la atmosfera, puede moverse
-		if (other.gameObject.CompareTag ("Atmosfera")) {
-			controlable = true;
-		}
-	}
-
-	//Si sale de la atmosfera, no puede moverse
-	void OnTriggerExit(Collider other){
-		if (other.gameObject.CompareTag ("Atmosfera")) {
-			controlable = false;
-		}
 	}
 
 	void SetCountText ()
@@ -87,15 +73,5 @@ public class ControladorBola : MonoBehaviour {
 	public int getCount()
 	{
 		return count;
-	}
-
-	public void bloquearMovimiento(){
-		this.controlable = false;
-		//Desactivamos la atmosfera para que no cambie el valor de "Controlable"
-		GameObject atmosfera = GameObject.FindGameObjectWithTag("Atmosfera");
-
-		if (atmosfera != null) {
-			atmosfera.SetActive (false);
-		}
 	}
 }
