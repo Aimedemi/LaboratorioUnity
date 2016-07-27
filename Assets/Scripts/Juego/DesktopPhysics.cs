@@ -8,8 +8,11 @@ public class DesktopPhysics : MonoBehaviour{
         //Vector3 pos = transform.position;
         float moveH = Input.GetAxisRaw("Horizontal");
         float moveV = Input.GetAxisRaw("Vertical");
-
-		Vector3 movement = new Vector3(moveH, 0.0f, moveV);
+		float moveA = 0.0f;;
+		if (Input.GetKey (KeyCode.Space)) {
+			moveA = 8.0f;
+		}
+		Vector3 movement = new Vector3(moveH, moveA, moveV);
 		rb.AddForce(rb.transform.TransformDirection(movement) * speed);
     }
 }
