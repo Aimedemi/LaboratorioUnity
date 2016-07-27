@@ -60,12 +60,6 @@ public class ControladorBola : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if (other.gameObject.CompareTag ( "Pick Up"))
-		{
-			other.gameObject.SetActive (false);
-			count = count + 1;
-			SetCountText ();
-		}
 		//Si entra a la atmosfera, puede moverse
 		if (other.gameObject.CompareTag ("Atmosfera")) {
 			controlable = true;
@@ -79,9 +73,10 @@ public class ControladorBola : MonoBehaviour {
 		}
 	}
 
-	void SetCountText ()
+	public void actualizarPuntuacion ()
 	{
-		countText.text = "Cubos : " + count.ToString ();
+		count++;
+		countText.text = "Cubos: " + count.ToString ();
 	}
 
 	public int getCount()

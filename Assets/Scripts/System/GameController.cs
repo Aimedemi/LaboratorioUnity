@@ -118,6 +118,14 @@ public class GameController : Singleton<GameController>
 		timer.setContar(false);
 		//Desactivamos el movimiento de la bola
 		jugador.bloquearMovimiento();
+
+		//Desactivamos los coleccionables
+		GameObject[] coleccionables = GameObject.FindGameObjectsWithTag("Pick Up");
+		foreach (GameObject go in coleccionables) {
+			Coleccionable coleccionable = go.GetComponent<Coleccionable> ();
+			coleccionable.desactivar();
+		}
+
 		gameOver.enabled = true;
 		string mensaje;
 		if (gano) {
