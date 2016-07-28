@@ -16,7 +16,13 @@ public class Coleccionable : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player") && enabled) {
 			this.gameObject.SetActive (false);
 			ControladorBola bola = other.GetComponent<ControladorBola> ();
-			bola.actualizarPuntuacion ();
+
+			if (this.name == "Pick Up S") {
+				bola.actualizarPuntuacion (25);
+			} else {
+				bola.actualizarPuntuacion (1);
+			}
+
 		}
 	}
 
