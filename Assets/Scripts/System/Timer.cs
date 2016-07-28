@@ -9,13 +9,26 @@ public class Timer : MonoBehaviour
 	public Text countDownFinishText;
 	private GameController GM;
 	private bool contar=true;
+	private bool pausa = false;
+	public Sprite imgPausa;
+	public Sprite imgPlay;
+	public Image imgEstado;
+
 
 	void Awake(){
 		GM = GameController.Instance;
 	}
 
+	public void swapPausa (){
+		pausa = (!pausa) ? true : false;
+		Time.timeScale = (pausa) ? 0 : 1;
+		imgEstado.sprite = (pausa) ? imgPlay : imgPausa;
+
+	}
 	void Start ()
 	{
+		imgEstado = imgEstado.GetComponent<Image>();
+		imgEstado.sprite = imgPausa;
 		countDownFinishText = countDownFinishText.GetComponent<Text>();
 	}
 

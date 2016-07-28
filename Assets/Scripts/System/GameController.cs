@@ -10,6 +10,7 @@ public class GameController : Singleton<GameController>
 	public Canvas gameOver;
 	public Button siBtn;
 	public Button noBtn;
+	public Button pausa;
 
 	protected GameController(){}
 
@@ -127,14 +128,17 @@ public class GameController : Singleton<GameController>
 		}
 
 		gameOver.enabled = true;
+		pausa.enabled = false;
+		Text texto = gameOver.transform.Find ("Resultado").GetComponent<Text> ();
 		string mensaje;
 		if (gano) {
 			mensaje = "¡GANASTE!\n";
+			texto.color = Color.green;
 		} else {
-			mensaje = "¡SE ACABO EL TIEMPO!\n";
+			mensaje = "¡PERDISTE!\n";
+			texto.color = Color.red;
 		}
 		//mensaje = mensaje + "¿Volver a jugar?";
-		Text texto = gameOver.transform.Find ("Resultado").GetComponent<Text> ();
 		texto.text = mensaje;
     }
 
