@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class ControladorBola : MonoBehaviour {
 	public float speed;
 	public Text countText;
-	public Text winText;
 
 	private int count;
 	private Rigidbody rb;
@@ -76,7 +75,7 @@ public class ControladorBola : MonoBehaviour {
 	public void actualizarPuntuacion ()
 	{
 		count++;
-		countText.text = "Cubos: " + count.ToString ();
+		countText.text = "Cubos : " + count.ToString ();
 	}
 
 	public int getCount()
