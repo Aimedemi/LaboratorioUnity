@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ControladorBolaNet : NetworkBehaviour
 {
@@ -67,9 +68,29 @@ public class ControladorBolaNet : NetworkBehaviour
         }
     }
 
-	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void actualizarPuntuacion (int valor)
+	{
+		string puntuaciones = "";
+		GameObject[] jugadores = GameObject.FindGameObjectsWithTag("NetPlayer");
+
+		foreach (GameObject jugador in jugadores) {
+			ControladorBola bola = jugador.GetComponent<ControladorBola> ();
+			bola.count = bola.count + valor;
+			puntuaciones = puntuaciones + "Cubos : " + bola.count.ToString () + "\n";
+		}
+
+		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
+		Text[] textos = canvas.GetComponentsInChildren<Text> ();
+
+		foreach (Text texto in textos) {
+			if (texto.name == "Cubos") {
+				texto.text = puntuaciones;
+			}
+		}
 	}
 }

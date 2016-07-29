@@ -8,8 +8,12 @@ public class MobilePhysics : MonoBehaviour{
         speed = speed * 50;
         float moveH = Input.acceleration.x;
         float moveV = Input.acceleration.y;
+		float moveA = 0.0f;
 
-        Vector3 movement = new Vector3(moveH, 0.0f, moveV);
+		if ((Input.touchCount == 1) && (Input.GetTouch (0).phase == TouchPhase.Began)) {
+			moveA = 8.0f;
+		}
+		Vector3 movement = new Vector3(moveH, moveA, moveV);
 
 		rb.AddForce(rb.transform.TransformDirection(movement) * speed * Time.deltaTime);
 

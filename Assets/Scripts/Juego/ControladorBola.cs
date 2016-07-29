@@ -5,7 +5,7 @@ public class ControladorBola : MonoBehaviour {
 	public float speed;
 	public Text countText;
 
-	private int count;
+	public int count;
 	private Rigidbody rb;
 	private Vector3 originalPos;
 	private bool controlable = true; //Variable booleana que indica si la bola se puede controlar
@@ -84,11 +84,6 @@ public class ControladorBola : MonoBehaviour {
 	{
 		count = count + valor;
 		countText.text = "Cubos : " + count.ToString ();
-	}
-
-	public int getCount()
-	{
-		return count;
 	}
 
 	public void bloquearMovimiento(){

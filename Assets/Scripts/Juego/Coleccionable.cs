@@ -4,6 +4,7 @@ using System.Collections;
 public class Coleccionable : MonoBehaviour {
 
 	private bool enabled = true;
+	public int valor;
 
 	//Funcion comentada por causar slow downs
 	/*
@@ -15,17 +16,18 @@ public class Coleccionable : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag ("Player") && enabled) {
+		if ((other.gameObject.CompareTag ("Player") || other.gameObject.CompareTag ("NetPlayer")) && enabled) {
 			this.gameObject.SetActive (false);
+
 			ControladorBola bola = other.GetComponent<ControladorBola> ();
+			ControladorBolaNet bolaNet = other.GetComponent<ControladorBolaNet> ();
 
-
-			if (this.name.StartsWith("Pick Up H")) {
-				bola.actualizarPuntuacion (2);
-			} else {
-				bola.actualizarPuntuacion (1);
+			//Si es una partida multijugador, actualiza el total de puntos de este jugador
+			if (bolaNet != null) {
+				bolaNet.actualizarPuntuacion (valor);
+			} else { //Si es offline, actualiza la puntuacion global
+				bola.actualizarPuntuacion (valor);
 			}
-
 		}
 	}
 

@@ -80,7 +80,7 @@ public class GameController : Singleton<GameController>
 			bool puntos = false;
 
 			foreach (ControladorBola j in jugadores) {
-				ObjetivoDTO dto = new ObjetivoDTO (j.getCount (), timer.getSecondsFinish ());
+				ObjetivoDTO dto = new ObjetivoDTO (j.count, timer.getSecondsFinish ());
 				foreach (Objetivo o in objetivos) {
 					if (o is ObjetivoTiempo) {
 						tiempo = o.verificarObjetivo (dto);
