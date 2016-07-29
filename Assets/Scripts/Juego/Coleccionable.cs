@@ -17,8 +17,9 @@ public class Coleccionable : MonoBehaviour {
 			this.gameObject.SetActive (false);
 			ControladorBola bola = other.GetComponent<ControladorBola> ();
 
-			if (this.name == "Pick Up S") {
-				bola.actualizarPuntuacion (25);
+
+			if (this.name.StartsWith("Pick Up H")) {
+				bola.actualizarPuntuacion (2);
 			} else {
 				bola.actualizarPuntuacion (1);
 			}

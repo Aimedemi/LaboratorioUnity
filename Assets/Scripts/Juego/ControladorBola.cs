@@ -62,6 +62,14 @@ public class ControladorBola : MonoBehaviour {
 		//Si entra a la atmosfera, puede moverse
 		if (other.gameObject.CompareTag ("Atmosfera")) {
 			controlable = true;
+			//Si detecta la atmosfera de otro planeta, cambia el atractor
+			GameObject atmosfera = other.gameObject;
+			FauxGravityAttractor atractor = atmosfera.transform.parent.GetComponent<FauxGravityAttractor> ();
+			FauxGravityBody gravedad = this.GetComponent<FauxGravityBody> ();
+			gravedad.attractor = atractor;
+			//Reestablecemos la atmosfera a su tamaño normal
+			Vector3 tamNormal = new Vector3(1.025f, 1.025f, 1.025f);
+			other.transform.localScale = tamNormal;
 		}
 	}
 
@@ -86,10 +94,12 @@ public class ControladorBola : MonoBehaviour {
 	public void bloquearMovimiento(){
 		this.controlable = false;
 		//Desactivamos la atmosfera para que no cambie el valor de "Controlable"
-		GameObject atmosfera = GameObject.FindGameObjectWithTag("Atmosfera");
+		GameObject[] atmosferas = GameObject.FindGameObjectsWithTag("Atmosfera");
 
-		if (atmosfera != null) {
-			atmosfera.SetActive (false);
+		foreach (GameObject atmosfera in atmosferas) {
+			if (atmosfera != null) {
+				atmosfera.SetActive (false);
+			}
 		}
 	}
 }
