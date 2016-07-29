@@ -5,11 +5,13 @@ public class Coleccionable : MonoBehaviour {
 
 	private bool enabled = true;
 
+	//Funcion comentada por causar slow downs
+	/*
 	void Update () 
 	{
 		if (enabled)
 			transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime);
-	}
+	}*/
 
 	void OnTriggerEnter(Collider other)
 	{
