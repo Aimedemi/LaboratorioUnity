@@ -159,13 +159,5 @@ public class GameController : Singleton<GameController>
 		this.timer = null;
 	}
 
-	//hay que sacarlo de aca
-	void Start () {
-		gameOver = gameOver.GetComponent<Canvas>();
-		siBtn = siBtn.GetComponent<Button>();
-		noBtn = noBtn.GetComponent<Button>();
-		gameOver.enabled = false;
-	}
-
 
 }
