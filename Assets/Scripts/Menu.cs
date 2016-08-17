@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement; // se necesita para cargar las escenas
  
 public class Menu : MonoBehaviour{
+	public Canvas optionMenu;
     public Canvas quitMenu;
 	public Canvas difficultyMenu;
     public Button singleBtn;
@@ -12,6 +13,7 @@ public class Menu : MonoBehaviour{
 	public string nivelInicial;
 
     void Start (){
+		optionMenu = optionMenu.GetComponent<Canvas>();
         quitMenu = quitMenu.GetComponent<Canvas>();
         singleBtn = singleBtn.GetComponent<Button> ();
         exitBtn = exitBtn.GetComponent<Button> ();
@@ -27,6 +29,7 @@ public class Menu : MonoBehaviour{
         exitBtn.enabled = false;
         multiBtn.enabled = false;
 		creditBtn.enabled = false;
+		difficultyMenu.enabled = false;
     }
 
     public void NoPress(){ //Esta funcion hace invisible el QuitMenu
@@ -35,22 +38,18 @@ public class Menu : MonoBehaviour{
         exitBtn.enabled = true;
         multiBtn.enabled = true;
 		creditBtn.enabled = true;
+		difficultyMenu.enabled = false;
     }
 
 	public void singlePlayer(){
 		difficultyMenu.enabled = true;
-		singleBtn.enabled = false; //Desaparece la opcion de hacer click en los demas botones
-		exitBtn.enabled = false;
-		multiBtn.enabled = false;
-		creditBtn.enabled = false;
+		optionMenu.enabled = false;
+
 	}
 
 	public void backPressed(){
 		difficultyMenu.enabled = false;
-		singleBtn.enabled = true;
-		exitBtn.enabled = true;
-		multiBtn.enabled = true;
-		creditBtn.enabled = true;
+		optionMenu.enabled = true;
 	}
 
 	public void facil(){

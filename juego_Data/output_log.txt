@@ -1,0 +1,87 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     853 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: G:\Unity\UltimoFede\juego_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading G:\Unity\UltimoFede\juego_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: G:\Unity\UltimoFede\juego_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading G:\Unity\UltimoFede\juego_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: G:\Unity\UltimoFede\juego_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading G:\Unity\UltimoFede\juego_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: G:\Unity\UltimoFede\juego_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading G:\Unity\UltimoFede\juego_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.096 seconds
+Platform assembly: G:\Unity\UltimoFede\juego_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: G:\Unity\UltimoFede\juego_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 50Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.807081 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1e10 -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.324439 ms
+[Singleton] Usando la instancia ya creada: Canvas
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1826.
+Total: 0.587864 ms (FindLiveObjects: 0.122745 ms CreateObjectMapping: 0.056651 ms MarkObjects: 0.379730 ms  DeleteObjects: 0.027915 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.907300 ms
+[Singleton] Usando la instancia ya creada: Canvas
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1834.
+Total: 1.153970 ms (FindLiveObjects: 0.177344 ms CreateObjectMapping: 0.126440 ms MarkObjects: 0.828018 ms  DeleteObjects: 0.019704 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.321488 ms
+
+Unloading 58 unused Assets to reduce memory usage. Loaded Objects now: 302.
+Total: 0.633431 ms (FindLiveObjects: 0.043104 ms CreateObjectMapping: 0.041462 ms MarkObjects: 0.316921 ms  DeleteObjects: 0.230301 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.606748 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 227.
+Total: 0.409698 ms (FindLiveObjects: 0.041462 ms CreateObjectMapping: 0.018883 ms MarkObjects: 0.337447 ms  DeleteObjects: 0.011084 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Menu.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.616189 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 299.
+Total: 0.532443 ms (FindLiveObjects: 0.030378 ms CreateObjectMapping: 0.039820 ms MarkObjects: 0.403540 ms  DeleteObjects: 0.057883 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.772597 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 227.
+Total: 0.331699 ms (FindLiveObjects: 0.036946 ms CreateObjectMapping: 0.032020 ms MarkObjects: 0.252059 ms  DeleteObjects: 0.009852 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Menu.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.409698 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 299.
+Total: 0.411340 ms (FindLiveObjects: 0.019294 ms CreateObjectMapping: 0.021347 ms MarkObjects: 0.322668 ms  DeleteObjects: 0.047620 ms)
+
