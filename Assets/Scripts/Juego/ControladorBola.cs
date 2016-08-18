@@ -83,7 +83,7 @@ public class ControladorBola : MonoBehaviour {
 	public void actualizarPuntuacion (int valor)
 	{
 		count = count + valor;
-		countText.text = "Cubos : " + count.ToString ();
+		countText.text = "Rocas : " + count.ToString ();
 	}
 
 	public void bloquearMovimiento(){

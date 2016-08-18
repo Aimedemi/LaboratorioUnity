@@ -81,7 +81,7 @@ public class ControladorBolaNet : NetworkBehaviour
 		foreach (GameObject jugador in jugadores) {
 			ControladorBola bola = jugador.GetComponent<ControladorBola> ();
 			bola.count = bola.count + valor;
-			puntuaciones = puntuaciones + "Cubos : " + bola.count.ToString () + "\n";
+			puntuaciones = puntuaciones + "Rocas : " + bola.count.ToString () + "\n";
 		}
 
 		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");

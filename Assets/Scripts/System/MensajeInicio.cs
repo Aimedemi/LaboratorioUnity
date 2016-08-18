@@ -26,7 +26,7 @@ public class MensajeInicio : MonoBehaviour {
 			}
 		}
 
-		objetivoCubos.text = "Juntar " + puntos + " cubos";
+		objetivoCubos.text = "Juntar " + puntos + " rocas";
 		objetivoTiempo.text = "en " + tiempo + " segundos";
 		StartCoroutine(Mensaje(3)); //Muestra el mensaje por 3 segundos
 	}
